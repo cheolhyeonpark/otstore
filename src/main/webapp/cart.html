@@ -7,6 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>::: OtStore :::</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <style>
+            .samesize {
+                width: 100%;
+                padding-bottom: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+        </style>
 </head>
 
 <body>
@@ -23,13 +32,12 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Product</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
@@ -51,52 +59,83 @@
         </div>
     </nav>
 
-	<div class="container" style="margin-top: 60px;">
-		<div class="row">
-			<div class="col-lg-5">
-				<div id="map" style="width: 100%; height: 400px;"></div>
-			</div>
-			<div class="col-lg-1" style="padding-top: 40px;"></div>
-			<div class="col-lg-6">
-				<h1>CONTACT US</h1>
-                <div class="row" style="margin-top: 20px;">
-                    <div>
-                        <img src="./images/location.png" width="100px" height="100px">
-                    </div>
-                    <div style="margin-left: 20px;">
-                        <p style="margin-top: 20px;">
-                            <h5>ADDRESS</h5>
-                        </p>
-                        <p style="font-size: 13px; color: rbga(0,0,0,0.8);">30-8, Dongmak-ro 19-gil, Mapo-gu, Seoul, Republic of Korea</p>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                    <div>
-                        <img src="./images/email.png" width="100px" height="100px">
-                    </div>
-                    <div style="margin-left: 20px;">
-                        <p style="margin-top: 20px;">
-                            <h5>EMAIL</h5>
-                        </p>
-                        <p style="font-size: 13px; color: rbga(0,0,0,0.8);">cheolhyeonpark@gmail.com</p>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                    <div>
-                        <img src="./images/phone.png" width="100px" height="100px">
-                    </div>
-                    <div style="margin-left: 20px;">
-                        <p style="margin-top: 20px;">
-                            <h5>PHONE NUMBER</h5>
-                        </p>
-                        <p style="font-size: 13px; color: rbga(0,0,0,0.8);">010-0000-0000</p>
-                    </div>
-                </div>
-			</div>
-		</div>
+    <div class="container" style="margin-top: 40px;">
+        <p>
+            <h1 style="margin-bottom: 30px;">Shopping Cart</h1>
+        </p>
+        <table class="table table-striped text-center">
+            <col width="20%">
+            <col width="20%">
+            <col width="20%">
+            <col width="20%">
+            <col width="20%">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center"></th>
+                    <th scope="col" class="text-center">PRODUCT</th>
+                    <th scope="col" class="text-center">PRICE</th>
+                    <th scope="col" class="text-center">QUANTITY</th>
+                    <th scope="col" class="text-center">REMOVE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><div class="img-thumbnail samesize" style="background-image: url('http://image.musinsa.com/images/goods_img/20160314/319176/319176_1_500.jpg')"></div></td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle">Mark</td>
+                    <td class="align-middle">Otto</td>
+                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
+                </tr>
+                <tr>
+                    <td><div class="img-thumbnail samesize" style="background-image: url('http://skinnovation-if.com/wp-content/uploads/2015/12/%EC%9D%B4%EB%AF%B8%EC%A7%804.jpg')"></div></td>
+                    <td class="align-middle">Otto</td>
+                    <td class="align-middle">Mark</td>
+                    <td class="align-middle">Otto</td>
+                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
+                </tr>
+                <tr>
+                    <td><div class="img-thumbnail samesize" style="background-image: url('http://img.ezmember.co.kr/cache/board/2015/09/08/c89670de82a708bd7f0507f3e184f768.jpg')"></div></td>
+                    <td class="align-middle">Otto</td>
+                    <td class="align-middle">Mark</td>
+                    <td class="align-middle">Otto</td>
+                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-	<div style="margin-top: 80px; background-color: rgba(0, 0, 0, 0.93); color: rgba(255, 255, 255, 0.8);">
+    <div class="container" style="margin-top: 40px;">
+        <div class="row">
+            <div class="col-lg-7"></div>
+            <div class="col-lg-5">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-8">CART TOTAL</div>
+                    <div class="col-4 text-right">10000000 won</div>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-8">TAX</div>
+                    <div class="col-4 text-right">won</div>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-8">SHIPPING</div>
+                    <div class="col-4 text-right">won</div>
+                </div>
+                <hr>
+                <div class="row" style="margin-bottom: 40px;">
+                    <div class="col-8">ORDER TOTAL</div>
+                    <div class="col-4 text-right">won</div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-dark col-12">PAYMENT</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-light col-12">CONTINUE SHOPPING</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 60px; background-color: rgba(0, 0, 0, 0.93); color: rgba(255, 255, 255, 0.8);">
         <div class="container">
             <div class="row" style="padding: 20px;">
                 <div class="col-lg">
@@ -146,29 +185,6 @@
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=83c2b82ff87bbaca7de26846b5d93a7b"></script>
-    <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new daum.maps.LatLng(37.5491165, 126.9248086), // 지도의 중심좌표
-                level: 4, // 지도의 확대 레벨
-                mapTypeId: daum.maps.MapTypeId.ROADMAP // 지도종류
-            };
-
-        // 지도를 생성한다 
-        var map = new daum.maps.Map(mapContainer, mapOption);
-
-        // 마커가 표시될 위치입니다 
-        var markerPosition = new daum.maps.LatLng(37.5491165, 126.9248086);
-
-        // 마커를 생성합니다
-        var marker = new daum.maps.Marker({
-            position: markerPosition
-        });
-
-        // 마커가 지도 위에 표시되도록 설정합니다
-        marker.setMap(map);
-    </script>
-    </body>
+</body>
 
 </html>
