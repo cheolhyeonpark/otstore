@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,19 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>::: OtStore :::</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <style>
-            .samesize {
-                width: 100%;
-                padding-bottom: 100%;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
-        </style>
+    <link rel="stylesheet" type="text/css" href="./css/my-login.css">
 </head>
 
-<body>
-
+<body class="my-login-page">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.html">OtStore</a>
@@ -30,7 +21,7 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="index.html">Home
                         </a>
                     </li>
@@ -59,81 +50,53 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 40px;">
-        <p>
-            <h1 style="margin-bottom: 30px;">Shopping Cart</h1>
-        </p>
-        <table class="table table-striped text-center">
-            <col width="20%">
-            <col width="20%">
-            <col width="20%">
-            <col width="20%">
-            <col width="20%">
-            <thead>
-                <tr>
-                    <th scope="col" class="text-center"></th>
-                    <th scope="col" class="text-center">PRODUCT</th>
-                    <th scope="col" class="text-center">PRICE</th>
-                    <th scope="col" class="text-center">QUANTITY</th>
-                    <th scope="col" class="text-center">REMOVE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><div class="img-thumbnail samesize" style="background-image: url('http://image.musinsa.com/images/goods_img/20160314/319176/319176_1_500.jpg')"></div></td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle">Mark</td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
-                </tr>
-                <tr>
-                    <td><div class="img-thumbnail samesize" style="background-image: url('http://skinnovation-if.com/wp-content/uploads/2015/12/%EC%9D%B4%EB%AF%B8%EC%A7%804.jpg')"></div></td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle">Mark</td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
-                </tr>
-                <tr>
-                    <td><div class="img-thumbnail samesize" style="background-image: url('http://img.ezmember.co.kr/cache/board/2015/09/08/c89670de82a708bd7f0507f3e184f768.jpg')"></div></td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle">Mark</td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
-    <div class="container" style="margin-top: 40px;">
-        <div class="row">
-            <div class="col-lg-7"></div>
-            <div class="col-lg-5">
-                <div class="row" style="margin-bottom: 20px;">
-                    <div class="col-8">CART TOTAL</div>
-                    <div class="col-4 text-right">10000000 won</div>
-                </div>
-                <div class="row" style="margin-bottom: 20px;">
-                    <div class="col-8">TAX</div>
-                    <div class="col-4 text-right">won</div>
-                </div>
-                <div class="row" style="margin-bottom: 20px;">
-                    <div class="col-8">SHIPPING</div>
-                    <div class="col-4 text-right">won</div>
-                </div>
-                <hr>
-                <div class="row" style="margin-bottom: 40px;">
-                    <div class="col-8">ORDER TOTAL</div>
-                    <div class="col-4 text-right">won</div>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-dark col-12">PAYMENT</button>
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-light col-12">CONTINUE SHOPPING</button>
+    <section class="h-100" style="margin-top: 40px; font-size: 14px;">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <div class="card fat">
+                        <div class="card-body">
+                            <h4 class="card-title">Register</h4>
+                            <form method="POST">
+
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input id="name" type="text" class="form-control" name="name" required autofocus>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">E-Mail Address</label>
+                                    <input id="email" type="email" class="form-control" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input id="password" type="password" class="form-control" name="password" required data-eye>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" name="aggree" value="1"> I agree to the Terms and Conditions
+                                    </label>
+                                </div>
+
+                                <div class="form-group no-margin">
+                                    <button type="submit" class="btn btn-dark btn-block">
+                                        Register
+                                    </button>
+                                </div>
+                                <div class="margin-top20 text-center">
+                                    Already have an account?
+                                    <a href="index.html">Login</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <div style="margin-top: 60px; background-color: rgba(0, 0, 0, 0.93); color: rgba(255, 255, 255, 0.8);">
         <div class="container">
@@ -185,6 +148,7 @@
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="js/my-login.js"></script>
 </body>
 
 </html>
