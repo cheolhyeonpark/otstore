@@ -8,14 +8,14 @@
     <title>::: OtStore :::</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <style>
-            .samesize {
-                width: 100%;
-                padding-bottom: 100%;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
-        </style>
+        .samesize {
+            width: 100%;
+            padding-bottom: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -80,25 +80,37 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><div class="img-thumbnail samesize" style="background-image: url('http://image.musinsa.com/images/goods_img/20160314/319176/319176_1_500.jpg')"></div></td>
+                    <td>
+                        <div class="img-thumbnail samesize" style="background-image: url('http://image.musinsa.com/images/goods_img/20160314/319176/319176_1_500.jpg')"></div>
+                    </td>
                     <td class="align-middle"></td>
                     <td class="align-middle">Mark</td>
                     <td class="align-middle">Otto</td>
-                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
+                    <td class="align-middle">
+                        <img src="./images/trash.png" width="20px" height="20px">
+                    </td>
                 </tr>
                 <tr>
-                    <td><div class="img-thumbnail samesize" style="background-image: url('http://skinnovation-if.com/wp-content/uploads/2015/12/%EC%9D%B4%EB%AF%B8%EC%A7%804.jpg')"></div></td>
+                    <td>
+                        <div class="img-thumbnail samesize" style="background-image: url('http://skinnovation-if.com/wp-content/uploads/2015/12/%EC%9D%B4%EB%AF%B8%EC%A7%804.jpg')"></div>
+                    </td>
                     <td class="align-middle">Otto</td>
                     <td class="align-middle">Mark</td>
                     <td class="align-middle">Otto</td>
-                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
+                    <td class="align-middle">
+                        <img src="./images/trash.png" width="20px" height="20px">
+                    </td>
                 </tr>
                 <tr>
-                    <td><div class="img-thumbnail samesize" style="background-image: url('http://img.ezmember.co.kr/cache/board/2015/09/08/c89670de82a708bd7f0507f3e184f768.jpg')"></div></td>
+                    <td>
+                        <div class="img-thumbnail samesize" style="background-image: url('http://img.ezmember.co.kr/cache/board/2015/09/08/c89670de82a708bd7f0507f3e184f768.jpg')"></div>
+                    </td>
                     <td class="align-middle">Otto</td>
                     <td class="align-middle">Mark</td>
                     <td class="align-middle">Otto</td>
-                    <td class="align-middle"><img src="./images/trash.png" width="20px" height="20px"></td>
+                    <td class="align-middle">
+                        <img src="./images/trash.png" width="20px" height="20px">
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -109,21 +121,21 @@
             <div class="col-lg-7"></div>
             <div class="col-lg-5">
                 <div class="row" style="margin-bottom: 20px;">
-                    <div class="col-8">CART TOTAL</div>
-                    <div class="col-4 text-right">10000000 won</div>
+                    <div class="col-6">CART TOTAL</div>
+                    <div class="col-6 text-right">10000000 won</div>
                 </div>
                 <div class="row" style="margin-bottom: 20px;">
-                    <div class="col-8">TAX</div>
-                    <div class="col-4 text-right">won</div>
+                    <div class="col-6">TAX</div>
+                    <div class="col-6 text-right">won</div>
                 </div>
                 <div class="row" style="margin-bottom: 20px;">
-                    <div class="col-8">SHIPPING</div>
-                    <div class="col-4 text-right">won</div>
+                    <div class="col-6">SHIPPING</div>
+                    <div class="col-6 text-right">won</div>
                 </div>
                 <hr>
                 <div class="row" style="margin-bottom: 40px;">
-                    <div class="col-8">ORDER TOTAL</div>
-                    <div class="col-4 text-right">won</div>
+                    <div class="col-6">ORDER TOTAL</div>
+                    <div class="col-6 text-right">won</div>
                 </div>
                 <div class="row" style="margin-bottom: 10px">
                     <button type="button" class="btn btn-dark col-12">PAYMENT</button>
@@ -185,6 +197,15 @@
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $.getJSON(commonURL+'/json/check', function (result) {
+            console.log(result);
+            if (result == 0) {
+                location.href = 'login.html';
+            }
+        });
+    </script>
 </body>
 
 </html>

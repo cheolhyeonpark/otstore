@@ -1,0 +1,1 @@
+commonURL = 'http://localhost:8080/otstore';

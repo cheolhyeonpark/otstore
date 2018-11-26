@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.otstore.repository.UserRepository">
+
+	<insert id="insert" parameterType="User">
+		insert into userTable (userName, userEmail, userPassword) 
+		values (#{userName}, #{userEmail}, #{userPassword})
+	</insert>
+
+	<select id="selectOne" resultType="Object" parameterType="User">
+		select userNumber 
+		from userTable 
+		where userEmail=#{userEmail} and userPassword=#{userPassword}
+	</select>
+
+</mapper>
+
+
+
+
