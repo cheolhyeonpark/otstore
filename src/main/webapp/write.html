@@ -73,11 +73,11 @@
         <div class="form-group">
             <label for="category">category</label>
             <select multiple class="form-control" id="category" name="category">
-                <option>Clothing</option>
-                <option>Shoes</option>
-                <option>Accessories</option>
-                <option>Bag</option>
-                <option>Gift</option>
+                <option value="1">Clothing</option>
+                <option value="2">Shoes</option>
+                <option value="3">Accessories</option>
+                <option value="4">Bag</option>
+                <option value="5">Gift</option>
             </select>
         </div>
         <div class="form-group">
@@ -187,11 +187,17 @@
             });
 
             function uploadProd() {
-                $.ajax('../json/upload', {
+                $.ajax(commonURL + '/json/upload', {
                     method: 'POST',
                     dataType: 'json',
                     data: {
-                        
+                        title : $("#title").val(),
+                        category : $("#category option:selected").val(),
+                        color : $("#color").val(),
+                        price : $("#price").val(),
+                        stock : $("#stock").val(),
+                        file : path,
+                        content : $("#content").val()
                     },
                     success: function (data) {
                         if (!data.err) {

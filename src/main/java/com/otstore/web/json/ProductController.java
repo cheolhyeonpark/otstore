@@ -10,10 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.otstore.domain.Product;
+import com.otstore.service.ProductService;
+
 @RestController
 public class ProductController {
 
 	@Autowired ServletContext sc;
+	
+	@Autowired ProductService productService;
 	
 	@RequestMapping("file")
 	public Object uploadFile(MultipartFile file) {
@@ -28,5 +33,10 @@ public class ProductController {
         }
 		
 		return path;
+	}
+	
+	@RequestMapping("upload")
+	public Object uploadProduct(Product product) {
+		return productService.insertProduct(product);
 	}
 }
