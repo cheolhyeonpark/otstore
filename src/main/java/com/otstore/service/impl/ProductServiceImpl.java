@@ -34,4 +34,9 @@ public class ProductServiceImpl implements ProductService {
 	public Product viewProduct(int prodNo) {
 		return productRepository.viewProduct(prodNo);
 	}
+
+	@Override
+	public List<Product> bestList() {
+		return productRepository.bestList();
+	}
 }

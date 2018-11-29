@@ -21,6 +21,12 @@
 		limit #{page}, 12
 	</select>
 
+	<select id="bestList" resultType="Product">
+		select prodNo, title, category, price, file from product
+		order by soldCnt desc
+		limit 1, 8
+	</select>
+
 	<select id="totalProduct" parameterType="map" resultType="int">
 		select count(*) from product
 		<if test="category != 0">
@@ -28,6 +34,11 @@
 		</if>
 	</select>
 
+	<select id="viewProduct" parameterType="int"
+		resultType="Product">
+		select * from product
+		where prodNo = #{prodNo}
+	</select>
 </mapper>
 
 

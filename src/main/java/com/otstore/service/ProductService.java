@@ -9,6 +9,7 @@ public interface ProductService {
 
 	int insertProduct(Product product);
 	List<Product> selectList(HashMap<String, Integer> map);
+	List<Product> bestList();
 	int totalProduct(HashMap<String, Integer> map);
 	Product viewProduct(int prodNo);
 }

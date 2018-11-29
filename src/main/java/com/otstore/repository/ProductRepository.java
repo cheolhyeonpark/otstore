@@ -7,11 +7,9 @@ import com.otstore.domain.Product;
 
 public interface ProductRepository {
 
-	int insertProduct(Product product);
-	
+	int insertProduct(Product product);	
 	List<Product> selectList(HashMap<String, Integer> map);
-	
+	List<Product> bestList();
 	int totalProduct(HashMap<String, Integer> map);
-	
-	Product viewProduct(int prodNo);	
+	Product viewProduct(int prodNo);
 }

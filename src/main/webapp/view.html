@@ -68,40 +68,44 @@
     <div class="container" style="margin-top: 40px">
         <div class="row">
             <div class="col-md-5" style="margin-bottom: 20px;">
-                <div class="img-thumbnail samesize" style="background-image: url('https://t1.daumcdn.net/cfile/tistory/2671653C55DBDD9E09')"></div>
+                <div class="img-thumbnail samesize" id="prodImg"></div>
             </div>
             <div class="col-md-7">
                 <p>
-                    <h1>Product1</h1>
+                    <h1>
+                        <span id="title"></span>
+                    </h1>
                 </p>
                 <p>
-                    <h5>10000000 won</h5>
+                    <h5>
+                        <span id="price"></span> won</h5>
                 </p>
                 <p>Nunc faucibus vel tellus non elementum. In at lacus volutpat, tincidunt ligula nec, sollicitudin dui. Donec
                     at molestie ipsum. Maecenas vel volutpat nibh.</p>
-                <p>Stock : 5</p>
+                <p>Stock :
+                    <span id="stock"></span>
+                </p>
                 <p>Color :
-                    <select class="custom-select">
-                        <option selected>color</option>
-                        <option value="1">red</option>
-                        <option value="2">blue</option>
-                        <option value="3">yellow</option>
-                    </select>
+                    <select class="custom-select" id="color"></select>
                 </p>
                 <p>Size :
                     <select class="custom-select">
                         <option selected>size</option>
-                        <option value="1">freesize</option>
+                        <option value="1">xs</option>
+                        <option value="2">s</option>
+                        <option value="3">m</option>
+                        <option value="4">l</option>
+                        <option value="5">xl</option>
                     </select>
                 </p>
                 <p>
                     <div class="input-group" style="width: 150px;">
                         Quantity :&nbsp
-                        <input type="number" class="form-control">
+                        <input type="number" class="form-control" id="quantity">
                     </div>
                 </p>
                 <p>
-                    <button type="button" class="btn btn-dark">Add to Cart</button>
+                    <button type="button" class="btn btn-dark" id="addBtn">Add to Cart</button>
                 </p>
             </div>
         </div>
@@ -111,6 +115,7 @@
         <p>
             <h3>DESCRIPTION</h3>
         </p>
+        <div id="content"></div>
         <p>Sed quis neque eu ex dapibus egestas. Mauris accumsan ultrices sem, non sollicitudin leo semper eu. Fusce placerat,
             ligula et rhoncus rutrum, leo mi tincidunt est, eget laoreet mauris quam tincidunt nunc. Sed in finibus magna.
             Morbi eu nisi dictum, congue nunc nec, accumsan orci. Nulla hendrerit urna odio, vel volutpat sapien ornare quis.
@@ -202,12 +207,25 @@
     <script src="./js/bootstrap.min.js"></script>
     <script src="js/common.js"></script>
     <script>
-        var params = $(location).attr('path').split('?')[1].split('=')[1];
-        console.log(params);
+        var params = location.href.split('?')[1].split('=')[1];
         $.getJSON(commonURL + '/json/view?prodNo=' + params, function (result) {
-                var htmlTag = ``;
-                console.log(result);
-            });
+            var htmlTag = ``;
+            $("#prodImg").css("background-image", `url('${result.file}')`);
+            $("#title").append(result.title);
+            $("#price").append(result.price);
+            $("#stock").append(result.stock);
+            var col = result.color.split(';');
+            var htmlTag = `<option selected>color</option>`;
+            for (var i = 0; i < col.length; i++) {
+                htmlTag += `<option value="${col[i]}">${col[i]}</option>`
+            }
+            $("#color").append(htmlTag);
+            $("#content").append(result.title);
+        });
+
+        $("#addBtn").click(function () {
+
+        });
     </script>
 </body>
 

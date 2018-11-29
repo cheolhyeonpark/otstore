@@ -51,6 +51,11 @@ public class ProductController {
 		return productService.selectList(map);
 	}
 	
+	@GetMapping("best")
+	public List<Product> bestList() {
+		return productService.bestList();
+	}
+	
 	@GetMapping("total") 
 	public int totalPage(Integer category) {
 		HashMap<String, Integer> map = new HashMap<>();
@@ -60,6 +65,6 @@ public class ProductController {
 	
 	@GetMapping("view")
 	public Object viewProduct(int prodNo) {
-		return 0;
+		return productService.viewProduct(prodNo);
 	}
 }
