@@ -2,6 +2,7 @@ package com.otstore.domain;
 
 public class Product {
 
+	int prodNo;
 	String title;
 	int category;
 	String color;
@@ -9,6 +10,14 @@ public class Product {
 	int stock;
 	String file;
 	String content;
+
+	public int getProdNo() {
+		return prodNo;
+	}
+
+	public void setProdNo(int prodNo) {
+		this.prodNo = prodNo;
+	}
 
 	public String getTitle() {
 		return title;

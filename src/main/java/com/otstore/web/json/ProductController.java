@@ -1,11 +1,14 @@
 package com.otstore.web.json;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,5 +41,25 @@ public class ProductController {
 	@RequestMapping("upload")
 	public Object uploadProduct(Product product) {
 		return productService.insertProduct(product);
+	}
+	
+	@GetMapping("list")
+	public List<Product> selectList(Integer page, Integer category) {
+		HashMap<String, Integer> map = new HashMap<>();		
+		map.put("page", (page-1)*12+1);
+		map.put("category", category);
+		return productService.selectList(map);
+	}
+	
+	@GetMapping("total") 
+	public int totalPage(Integer category) {
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("category", category);
+		return productService.totalProduct(map);
+	}
+	
+	@GetMapping("view")
+	public Object viewProduct(int prodNo) {
+		return 0;
 	}
 }

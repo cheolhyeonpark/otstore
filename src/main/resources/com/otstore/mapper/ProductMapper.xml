@@ -5,9 +5,28 @@
 <mapper namespace="com.otstore.repository.ProductRepository">
 
 	<insert id="insertProduct" parameterType="Product">
-		insert into product (title, category, color, price, stock, file, content, soldCnt) 
-		values (#{title}, #{category}, #{color}, #{price}, #{stock}, #{file}, #{content}, 0)
+		insert into product
+		(title, category, color, price, stock, file, content, soldCnt)
+		values
+		(#{title}, #{category}, #{color}, #{price}, #{stock}, #{file},
+		#{content}, 0)
 	</insert>
+
+	<select id="selectList" parameterType="map" resultType="Product">
+		select prodNo, title, category, price, file from product
+		<if test="category != 0">
+			where category = #{category}
+		</if>
+		order by prodNo desc
+		limit #{page}, 12
+	</select>
+
+	<select id="totalProduct" parameterType="map" resultType="int">
+		select count(*) from product
+		<if test="category != 0">
+			where category = ${category}
+		</if>
+	</select>
 
 </mapper>
 
