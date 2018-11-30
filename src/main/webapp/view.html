@@ -101,7 +101,7 @@
                 <p>
                     <div class="input-group" style="width: 150px;">
                         Quantity :&nbsp
-                        <input type="number" class="form-control" id="quantity">
+                        <input type="number" class="form-control" id="quantity" value="1">
                     </div>
                 </p>
                 <p>
@@ -116,39 +116,6 @@
             <h3>DESCRIPTION</h3>
         </p>
         <div id="content"></div>
-        <p>Sed quis neque eu ex dapibus egestas. Mauris accumsan ultrices sem, non sollicitudin leo semper eu. Fusce placerat,
-            ligula et rhoncus rutrum, leo mi tincidunt est, eget laoreet mauris quam tincidunt nunc. Sed in finibus magna.
-            Morbi eu nisi dictum, congue nunc nec, accumsan orci. Nulla hendrerit urna odio, vel volutpat sapien ornare quis.
-            Phasellus congue pulvinar imperdiet. Maecenas semper, turpis et mollis laoreet, tortor urna placerat quam, ut
-            suscipit ligula risus quis metus. Suspendisse sed augue eget justo mattis cursus et a purus. Suspendisse dapibus
-            ligula justo, et auctor ipsum condimentum ac. Nulla vel ullamcorper neque. Nulla sit amet placerat diam, ac vulputate
-            lacus. Nulla facilisi. Praesent et dui semper, fermentum lectus a, volutpat erat.</p>
-        <p>
-            <h4>Description</h4>
-        </p>
-        <p>Nam luctus velit sed est hendrerit, ut suscipit diam luctus. Nunc dictum rhoncus risus, et facilisis elit porttitor
-            tincidunt. Cras congue rutrum magna, eu tincidunt purus dignissim at. Phasellus vitae orci dolor. Maecenas at
-            ultricies lacus, quis accumsan mauris. Fusce volutpat metus nunc, at bibendum quam faucibus id. Aliquam et odio
-            cursus libero convallis dictum vitae nec magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-            per inceptos himenaeos. Quisque convallis orci nec euismod interdum. Mauris at orci ante. Aenean turpis augue,
-            porttitor non tortor non, maximus pharetra ex.</p>
-        <p>Proin sit amet massa vel leo faucibus rutrum. Morbi fringilla viverra lacus, non fermentum elit tincidunt eget. Nullam
-            posuere ex nec elit vehicula, at lobortis felis interdum. Cras eu lectus nec ligula ullamcorper blandit eget
-            sit amet nulla. Vestibulum ut odio eu erat ullamcorper tincidunt. Integer non neque eu est dictum imperdiet non
-            a dolor. Nam tortor neque, lobortis eu libero vel, tincidunt porta nisl. Sed convallis ullamcorper ex et venenatis.
-            Nam pharetra vel dui non euismod. Nulla leo tellus, bibendum sed velit eu, aliquet placerat elit. Fusce quam
-            turpis, luctus nec arcu eu, tempus ultrices mauris. Maecenas porttitor enim eget ante condimentum, eget bibendum
-            justo vulputate. Nunc sed ipsum ultrices, sollicitudin lectus a, ornare nibh.</p>
-        <p>
-            <h4>Standard Featured</h4>
-        </p>
-        <p>Nunc faucibus vel tellus non elementum. In at lacus volutpat, tincidunt ligula nec, sollicitudin dui. Sed efficitur
-            convallis justo, in varius purus. Ut consectetur augue bibendum ipsum imperdiet, sed luctus tortor commodo. Donec
-            faucibus laoreet vestibulum. Phasellus et imperdiet neque, vitae ornare est. Aliquam at ligula in diam consectetur
-            sodales. Cras hendrerit malesuada ex, non scelerisque odio scelerisque id. Maecenas massa quam, ultricies quis
-            aliquam eu, ullamcorper a mauris. Etiam pellentesque vulputate sapien. Nam sed orci nisi. Vivamus feugiat, dui
-            sed ornare dictum, turpis magna sagittis lectus, quis volutpat mi tellus at lorem. Curabitur tempor lacinia ante,
-            at rhoncus mauris blandit id. Pellentesque eu purus quis enim venenatis condimentum.</p>
     </div>
 
     <div class="container" style="margin-top: 40px;">
@@ -208,6 +175,16 @@
     <script src="js/common.js"></script>
     <script>
         var params = location.href.split('?')[1].split('=')[1];
+        var userNumber = 0;
+        var prodNo = 0;
+        var price;
+        var filepath;
+        var title;
+
+        $.getJSON(commonURL + '/json/check', function (result) {
+            userNumber = result;
+        });
+
         $.getJSON(commonURL + '/json/view?prodNo=' + params, function (result) {
             var htmlTag = ``;
             $("#prodImg").css("background-image", `url('${result.file}')`);
@@ -220,11 +197,37 @@
                 htmlTag += `<option value="${col[i]}">${col[i]}</option>`
             }
             $("#color").append(htmlTag);
-            $("#content").append(result.title);
+            $("#content").append(result.content);
+            prodNo = result.prodNo;
+            title = result.title;
+            price = result.price;
+            filepath = result.file;
         });
 
-        $("#addBtn").click(function () {
-
+        $("#addBtn").click(function addClick(file) {
+            if (userNumber == 0) {
+                location.href = 'login.html';
+            }
+            $.ajax(commonURL + '/json/insertCart', {
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    userNumber: userNumber,
+                    prodNo: prodNo,
+                    title: title,
+                    color: $("#color").val(),
+                    price: price,
+                    quantity: $("#quantity").val(),
+                    file: filepath
+                },
+                success: function (data) {
+                    if (!data.err) {
+                        location.href = 'cart.html';
+                    } else {
+                        console.log(data.error);
+                    }
+                }
+            });
         });
     </script>
 </body>

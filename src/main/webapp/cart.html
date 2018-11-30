@@ -78,41 +78,7 @@
                     <th scope="col" class="text-center">REMOVE</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="img-thumbnail samesize" style="background-image: url('http://image.musinsa.com/images/goods_img/20160314/319176/319176_1_500.jpg')"></div>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle">Mark</td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle">
-                        <img src="./images/trash.png" width="20px" height="20px">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="img-thumbnail samesize" style="background-image: url('http://skinnovation-if.com/wp-content/uploads/2015/12/%EC%9D%B4%EB%AF%B8%EC%A7%804.jpg')"></div>
-                    </td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle">Mark</td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle">
-                        <img src="./images/trash.png" width="20px" height="20px">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="img-thumbnail samesize" style="background-image: url('http://img.ezmember.co.kr/cache/board/2015/09/08/c89670de82a708bd7f0507f3e184f768.jpg')"></div>
-                    </td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle">Mark</td>
-                    <td class="align-middle">Otto</td>
-                    <td class="align-middle">
-                        <img src="./images/trash.png" width="20px" height="20px">
-                    </td>
-                </tr>
-            </tbody>
+            <tbody id="content"></tbody>
         </table>
     </div>
 
@@ -122,26 +88,26 @@
             <div class="col-lg-5">
                 <div class="row" style="margin-bottom: 20px;">
                     <div class="col-6">CART TOTAL</div>
-                    <div class="col-6 text-right">10000000 won</div>
+                    <div class="col-6 text-right"><span id="carttotal"></span> won</div>
                 </div>
                 <div class="row" style="margin-bottom: 20px;">
                     <div class="col-6">TAX</div>
-                    <div class="col-6 text-right">won</div>
+                    <div class="col-6 text-right"><span id="tax"></span> won</div>
                 </div>
                 <div class="row" style="margin-bottom: 20px;">
                     <div class="col-6">SHIPPING</div>
-                    <div class="col-6 text-right">won</div>
+                    <div class="col-6 text-right"><span id="shipping"></span> won</div>
                 </div>
                 <hr>
                 <div class="row" style="margin-bottom: 40px;">
                     <div class="col-6">ORDER TOTAL</div>
-                    <div class="col-6 text-right">won</div>
+                    <div class="col-6 text-right"><span id="ordertotal"></span> won</div>
                 </div>
                 <div class="row" style="margin-bottom: 10px">
                     <button type="button" class="btn btn-dark col-12">PAYMENT</button>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-light col-12">CONTINUE SHOPPING</button>
+                    <button type="button" class="btn btn-light col-12" onclick="location.href='product.html'">CONTINUE SHOPPING</button>
                 </div>
             </div>
         </div>
@@ -203,6 +169,39 @@
             if (result == 0) {
                 location.href = 'login.html';
             }
+            var userNumber = result;
+
+            $.getJSON(commonURL+'/json/cartList?userNumber='+userNumber, function (data) {
+                var htmlTag = ``;
+                var sum = 0;
+                for (i = 0; i < data.length; i++) {
+                    htmlTag += `<tr>
+                                    <td>
+                                        <div class="img-thumbnail samesize" style="background-image: url('${data[i].file}'"></div>
+                                    </td>
+                                    <td class="align-middle">${data[i].title}</td>
+                                    <td class="align-middle">${data[i].price}</td>
+                                    <td class="align-middle">${data[i].quantity}</td>
+                                    <td class="align-middle">
+                                        <a class="remove" href="#" value="${data[i].cartNo}"><img src="./images/trash.png" width="20px" height="20px"></a>
+                                    </td>
+                                </tr>`
+                    sum += data[i].price * data[i].quantity;
+                }
+                $("#content").append($(htmlTag));
+                $("#carttotal").append(sum);
+                $("#tax").append(sum*0.05);
+                var ship = sum >= 50000 ? 0 : 2500;
+                $("#shipping").append(ship);
+                $("#ordertotal").append(sum+sum*0.05+ship);
+
+                $(".remove").click(function() {
+                    var cartNo = $(this).attr('value');
+                    $.getJSON(commonURL+'/json/removeCart?cartNo='+cartNo, function (result) {
+                        location.reload();
+                    });
+                });
+            });
         });
     </script>
 </body>

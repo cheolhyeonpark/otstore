@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.otstore.repository.CartRepository">
+
+	<insert id="insertCart" parameterType="Cart">
+		insert into cartTable (userNumber, prodNo, title, quantity, price, color, file)
+		values (#{userNumber}, #{prodNo}, #{title}, #{quantity}, #{price}, #{color}, #{file})
+	</insert>
+
+	<select id="cartList" parameterType="int" resultType="Cart">
+		select cartNo, title, price, quantity, file from cartTable
+	</select>
+	
+	<delete id="removeCart" parameterType="int">
+		delete from cartTable where cartNo = #{cartNo} 
+	</delete>
+</mapper>
+
+
+
+

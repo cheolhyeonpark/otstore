@@ -34,9 +34,10 @@ public class UserController {
 	}
 
 	@GetMapping("/logout")
-	public void logout(HttpServletRequest request) throws Exception {
+	public int logout(HttpServletRequest request) throws Exception {
 		HttpSession httpSession = request.getSession();
-		httpSession.setAttribute("userNumber", null);
+		httpSession.invalidate();
+		return 1;
 	}
 
 	@GetMapping("/check")

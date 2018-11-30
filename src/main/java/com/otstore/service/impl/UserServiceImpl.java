@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Object login(User user) {
-		System.out.println("+=+=+ service start +=+=+");
 		return userRepository.selectOne(user);
 	}
 }

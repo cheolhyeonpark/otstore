@@ -147,6 +147,15 @@
     <script src="js/sweetalert.min.js"></script>
     <script src="js/common.js"></script>
     <script>
+        $.getJSON(commonURL + '/json/check', function (result) {
+            if (result != 0) {
+                $.getJSON(commonURL + '/json/logout', function (data) {
+                    if (data == 1) swal("logout");
+                    else swal("error");
+                });
+            }
+        });
+
         $(lgnBtn).click(function () {
             if ($(email).val() == null || $(email).val() == '') {
                 swal("ERROR", "Please check your email");
@@ -154,7 +163,7 @@
             else if ($(password).val() == null || $(password).val() == '') {
                 swal("ERROR", "Please check your password");
             } else {
-                $.ajax(commonURL+"/json/login", {
+                $.ajax(commonURL + "/json/login", {
                     method: 'POST',
                     dataType: 'json',
                     data: {
@@ -166,7 +175,7 @@
                         if (data == "1") {
                             location.href = 'index.html';
                         } else {
-                            swal("ERROR");
+                            swal("ERROR","Please check your email or password.");
                             console.log(data.error);
                         }
                     }
