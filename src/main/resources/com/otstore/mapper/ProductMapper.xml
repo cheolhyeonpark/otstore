@@ -24,7 +24,7 @@
 	<select id="bestList" resultType="Product">
 		select prodNo, title, category, price, file from product
 		order by soldCnt desc
-		limit 1, 8
+		limit 0, 8
 	</select>
 
 	<select id="totalProduct" parameterType="map" resultType="int">

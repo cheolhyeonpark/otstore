@@ -166,9 +166,10 @@
                 for (i = 0; i < result.length; i++) {
 
                     if (i % 3 == 0) htmlTag += `<div class='row'>`;
-
+                    
+                    var imgfile = commonURL + '/files/' + result[i].file;
                     htmlTag += `<div class="col-md btmg">
-                                    <a href="view.html?prod=${result[i].prodNo}"><div class="img-thumbnail samesize" style="background-image: url('${result[i].file}')"></div></a>
+                                    <a href="view.html?prod=${result[i].prodNo}"><div class="img-thumbnail samesize" style="background-image: url('${imgfile}')"></div></a>
                                     <div>
                                         <p class="text-center font-weight-bold" style="margin-bottom: 5px">${result[i].title}</p>
                                         <p class="text-center" style="font-size: 0.75em">${result[i].price} won</p>
@@ -177,7 +178,11 @@
 
                     if (i % 3 == 2) htmlTag += `</div>`;
                 }
-                if (result.length % 3 != 2) htmlTag += `</div>`;
+                if (result.length % 3 != 0) {
+                    if (result.length % 3 == 2) htmlTag += `<div class="col-md"></div>`;
+                    else htmlTag += `<div class="col-md"></div><div class="col-md"></div>`;
+                    htmlTag += `</div>`;
+                } 
 
                 $("#productList").append($(htmlTag));
                 getTotalPage(page, category);

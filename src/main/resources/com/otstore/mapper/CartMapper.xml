@@ -10,7 +10,7 @@
 	</insert>
 
 	<select id="cartList" parameterType="int" resultType="Cart">
-		select cartNo, title, price, quantity, file from cartTable
+		select cartNo, title, price, quantity, file from cartTable where userNumber=#{userNumber}
 	</select>
 	
 	<delete id="removeCart" parameterType="int">

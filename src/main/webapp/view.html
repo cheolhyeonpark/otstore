@@ -187,7 +187,8 @@
 
         $.getJSON(commonURL + '/json/view?prodNo=' + params, function (result) {
             var htmlTag = ``;
-            $("#prodImg").css("background-image", `url('${result.file}')`);
+            var imgfile = commonURL + '/files/' + result.file;
+            $("#prodImg").css("background-image", `url('${imgfile}')`);
             $("#title").append(result.title);
             $("#price").append(result.price);
             $("#stock").append(result.stock);

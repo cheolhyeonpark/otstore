@@ -35,7 +35,7 @@ public class ProductController {
             e.printStackTrace();
         }
 		
-		return path;
+		return newfilename;
 	}
 	
 	@RequestMapping("upload")
@@ -46,7 +46,7 @@ public class ProductController {
 	@GetMapping("list")
 	public List<Product> selectList(Integer page, Integer category) {
 		HashMap<String, Integer> map = new HashMap<>();		
-		map.put("page", (page-1)*12+1);
+		map.put("page", (page-1)*12);
 		map.put("category", category);
 		return productService.selectList(map);
 	}

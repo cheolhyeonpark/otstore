@@ -175,9 +175,10 @@
                 var htmlTag = ``;
                 var sum = 0;
                 for (i = 0; i < data.length; i++) {
+                    var imgfile = commonURL + '/files/' + data[i].file;
                     htmlTag += `<tr>
                                     <td>
-                                        <div class="img-thumbnail samesize" style="background-image: url('${data[i].file}'"></div>
+                                        <div class="img-thumbnail samesize" style="background-image: url('${imgfile}'"></div>
                                     </td>
                                     <td class="align-middle">${data[i].title}</td>
                                     <td class="align-middle">${data[i].price}</td>
@@ -188,12 +189,13 @@
                                 </tr>`
                     sum += data[i].price * data[i].quantity;
                 }
+                var tax = parseInt(sum*0.05);
                 $("#content").append($(htmlTag));
                 $("#carttotal").append(sum);
-                $("#tax").append(sum*0.05);
-                var ship = sum >= 50000 ? 0 : 2500;
+                $("#tax").append(tax);
+                var ship = sum >= 50000 || sum == 0 ? 0 : 2500;
                 $("#shipping").append(ship);
-                $("#ordertotal").append(sum+sum*0.05+ship);
+                $("#ordertotal").append(sum+tax+ship);
 
                 $(".remove").click(function() {
                     var cartNo = $(this).attr('value');
